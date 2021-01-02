@@ -23,7 +23,7 @@ var getLength = function() {
 
 var getCharTypes = function() {
 
-  While (upper === false && lower === false && num === false && special === false){
+  While (upper === false && lower === false && num === false && special === false); {
   alert("Please enter one or more character types")
 
   var upper = confirm("Do you want upper case letters?")
