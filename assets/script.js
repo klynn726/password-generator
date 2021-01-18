@@ -82,7 +82,7 @@ for (i = passText.length -1; i > 0; i--){
 passText = num.toString
 }
 }
-// }
+
 //one char of each type (min) in password
 // function charTypeCheck(getCharTypes){
 //   if (true)
@@ -91,7 +91,6 @@ passText = num.toString
 // }
 
 //generate password 
-
 function generatePassword() {
   getLength()
   getCharTypes()
