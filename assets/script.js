@@ -1,6 +1,6 @@
 //get length of password
 //check for integer between 8-128
-var length = 0
+// var length = 0
 var up = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var down = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
@@ -10,17 +10,17 @@ var passwordText = []
 var getLength = function() {
   length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
 
- if (length < 8 || length > 128){
+ while (length < 8 || length > 128){
    alert("Please enter a valid number between 8 - 128 characters");
    length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
    return;
  }
-
+ 
 }
 
 //char types upper, lower, numeric, special
 //push selected types into passwordText array
-//check for input
+//check for any input ask for valid input
 
 var getCharTypes = function() {
 
@@ -56,30 +56,38 @@ if (special === true){
 // add randomization to password array
 
 function random() {
-  for (var i = 0; i < length; i++) {
-      var passwordText = Math.floor(Math.random() * passwordText.length)
-      passwordText.push()
-  }
+for (i = passwordText.length -1; i > 0; i--){
+  j = Math.floor(Math.random() * i)
+  k = passwordText[i]
+  passwordText[i] = passwordText[j]
+  passwordText[j] = passwordText
+}
 }
 
 
 // loop through random password array
 function loop(){
-for (i=0; i < passwordText.length; i++){
+for (var i = 0; i < length; i++){
   random()
   passwordText[i];
+  
 }
 }
 //one char of each type (min) in password
-function charTypeCheck(getCharTypes){
-  if (true)
-  passwordText[i]
-  i >= 1;
-}
+// function charTypeCheck(getCharTypes){
+//   if (true)
+//   passwordText[i]
+//   i >= 1;
+// }
 
+//password generated
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+function generatePassword() {
+  getLength()
+  getCharTypes()
+  loop()
+  // charTypeCheck()
+  }
 
 // Write password to the #password input
 function writePassword() {
@@ -87,19 +95,10 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
-//password generated and written on the page
-
-function generatePassword() {
-  getLength()
-  getCharTypes()
-  loop()
-  charTypeCheck()
-  return writePassword()
-  }
-
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
