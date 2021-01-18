@@ -18,8 +18,6 @@ var getLength = function() {
 
 }
 
-
-
 //char types upper, lower, numeric, special
 //push selected types into passwordText array
 //check for input
@@ -57,36 +55,27 @@ if (special === true){
 
 // add randomization to password array
 
-function random(passwordText) {
-  for (var i = passwordText.length -1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+function random() {
+  for (var i = 0; i < length; i++) {
+      var passwordText = Math.floor(Math.random() * passwordText.length)
+      passwordText.push()
   }
 }
 
 
-// loop through password array
-//one char of each type (min) in password
-
-
+// loop through random password array
+function loop(){
 for (i=0; i < passwordText.length; i++){
+  random()
   passwordText[i];
-
 }
-//password generated and written on the page
-  // writePassword()
- function generatePassword() {
-  getLength()
-  console.log(length)
-  getCharTypes()
-  checkCharTypes()
-  return "ABC"
-  }
-
-// getLength()
-
+}
+//one char of each type (min) in password
+function charTypeCheck(getCharTypes){
+  if (true)
+  passwordText[i]
+  i >= 1;
+}
 
 
 // Get references to the #generate element
@@ -100,6 +89,17 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+//password generated and written on the page
+
+function generatePassword() {
+  getLength()
+  getCharTypes()
+  loop()
+  charTypeCheck()
+  return writePassword()
+  }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
