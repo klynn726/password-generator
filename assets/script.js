@@ -1,70 +1,91 @@
-// Assignment code here
-
 //get length of password
 //check for integer between 8-128
+var length = 0
+var up = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var down = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+var sym = ["!","@","#","$","%","^","&","*","(",")","{","}"]
+var passwordText = []
 
 var getLength = function() {
-  var length = prompt("Enter a password length between 8 - 128 characters")
+  length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
 
-  while (parseInt(length)){
+ if (length < 8 || length > 128){
+   alert("Please enter a valid number between 8 - 128 characters");
+   length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
+   return;
+ }
 
-    8 <= length <= 128;
+}
 
-    getCharTypes()
-
-  }
-
-  getLength()
-
-};
 
 
 //char types upper, lower, numeric, special
+//push selected types into passwordText array
+//check for input
 
 var getCharTypes = function() {
 
-  While (upper === false && lower === false && num === false && special === false); {
-  alert("Please enter one or more character types")
-
   var upper = confirm("Do you want upper case letters?")
   if (upper === true){
-    passwordText.value.push(/[A-Z]/)
-  }
+  passwordText.push([up])
+}
 
   var lower = confirm("Do you want lower case letters?")
-  if (lower === true){
-   passwordText.value.push(/[a-z]/)
-  }
+if (lower === true){
+  passwordText.push([down])
+ }
 
   var num = confirm("Do you want numbers?")
-  if (num === true){
-    passwordText.value.push(/[0-9]/)
-  }
+ if (num === true){
+  passwordText.push([num])
+}
+
 
   var special = confirm("Do you want special characters?")
-  if (special === true){
+if (special === true){
+  passwordText.push([sym])
+}
 
-    passwordText.value.push(/["!","@","#","$","%","^","&","*","(",")","{","}","]/)
 
-  }
+  if (upper === false && lower === false && num === false && special === false)
+    {
+    alert("Please enter one or more character types")
+    getCharTypes()
   }
 }
 
-var passwordText = {
+// add randomization to password array
 
-    value: []
+function random(passwordText) {
+  for (var i = passwordText.length -1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
 }
 
+
+// loop through password array
 //one char of each type (min) in password
-//password generated and written on the page
 
-for (i=0; i < length; i++){
-  passwordText.value
-  writePassword()
+
+for (i=0; i < passwordText.length; i++){
+  passwordText[i];
+
 }
+//password generated and written on the page
+  // writePassword()
+ function generatePassword() {
+  getLength()
+  console.log(length)
+  getCharTypes()
+  checkCharTypes()
+  return "ABC"
+  }
 
-
-getLength()
+// getLength()
 
 
 
