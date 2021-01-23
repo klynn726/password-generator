@@ -1,109 +1,92 @@
 
-// Get references to the #generate element
+// // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-
-//get length of password
-//check for integer between 8-128
-var length = 0
 var up = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var down = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 var sym = ["!","@","#","$","%","^","&","*","(",")","{","}"]
-var passText = []
+var passText = ""
 var choices = []
+var merged = []
+var length = 0
+var upper = false
+var lower = false
+var number = false
+var special = false
+var password = ""
+var randomization = ""
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+function reset() {
+  console.log("reset function")
+  upper = false
+  lower = false
+  number = false
+  special = false
+  password = ""
+  writePassword()
 }
 
-var getLength = function() {
-  length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
+function writePassword(){
+  //get length of password
 
+ length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
+
+ //check for integer between 8-128
  while (length < 8 || length > 128){
-   alert("Please enter a valid number between 8 - 128 characters");
-   length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
-   return;
- }
- 
+  alert("Please enter a valid number between 8 - 128 characters");
+  length = parseInt(prompt("Enter a password length between 8 - 128 characters"))
 }
+  // console.log("length value", length)
 
-//char types upper, lower, numeric, special
-//push selected types into passwordText array
-//check for any input ask for valid input
-
-var getCharTypes = function() {
+//request char types and push to choices array found syntax on javascript.info/array "push(...items) adds items to the end."
 
   var upper = confirm("Do you want upper case letters?")
   if (upper === true){
-  choices.push([up])
+  choices.push(...up)
 }
 
   var lower = confirm("Do you want lower case letters?")
 if (lower === true){
-  choices.push([down])
+  choices.push(...down)
  }
 
   var number = confirm("Do you want numbers?")
  if (number === true){
-  choices.push([num])
+  choices.push(...num)
 }
 
 
   var special = confirm("Do you want special characters?")
 if (special === true){
-  choices.push([sym])
+  choices.push(...sym)
 }
 
-
+//confirm a selection was made 
   if (upper === false && lower === false && num === false && special === false)
     {
     alert("Please enter one or more character types")
-    getCharTypes()
+    reset()
   }
-}
 
+  // console.log(choices)
 
-// add randomization to password array
-// loop through random password array
-
-function loop (){
-  console.log (choices)
+  //add randomization
+  
   for (var i = 0; i < length; i++){
-
-    
-
-// for (i = passText.length -1; i > 0; i--){
-//   j = Math.floor(Math.random() * i)
-//   k = choices[i]
-//   choices[i] = choices[j]
-//   choices[j] = passText
-// }
-// passText = num.toString
-}
-}
-
-//one char of each type (min) in password
-// function charTypeCheck(getCharTypes){
-//   if (true)
-//   passwordText[i]
-//   i >= 1;
-// }
-
-//generate password 
-function generatePassword() {
-  getLength()
-  getCharTypes()
-  loop()
-  // charTypeCheck()
-  // writePassword()
-  return "text"
+    //this is similar to the code in activity 3 used to make something random
+    randomization = Math.floor(Math.random() * choices.length)
+    //this is a new variable that randomizes the choices array
+    passText = choices[randomization] 
+    //this is a new array with the output of the for loop, randomization, and choices
+    merged.push(passText)
   }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword)
-
-writePassword()
+  //w2schools this makes it a string so it can be wrriten on the page correctly
+password = merged.join("")
+//this writes the password to the HTML using the DOM
+document.querySelector("#password").innerHTML = password
+//this writes the password to the page
+return password
+}
+//this listens for the click then starts the writePassword function
+generateBtn.addEventListener("click", writePassword);
