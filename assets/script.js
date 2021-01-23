@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 
 //get length of password
 //check for integer between 8-128
-// var length = 0
+var length = 0
 var up = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var down = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
@@ -47,8 +47,8 @@ if (lower === true){
   choices.push([down])
  }
 
-  var num = confirm("Do you want numbers?")
- if (num === true){
+  var number = confirm("Do you want numbers?")
+ if (number === true){
   choices.push([num])
 }
 
@@ -71,15 +71,18 @@ if (special === true){
 // loop through random password array
 
 function loop (){
+  console.log (choices)
   for (var i = 0; i < length; i++){
 
-for (i = passText.length -1; i > 0; i--){
-  j = Math.floor(Math.random() * i)
-  k = choices[i]
-  choices[i] = choices[j]
-  choices[j] = passText
-}
-passText = num.toString
+    
+
+// for (i = passText.length -1; i > 0; i--){
+//   j = Math.floor(Math.random() * i)
+//   k = choices[i]
+//   choices[i] = choices[j]
+//   choices[j] = passText
+// }
+// passText = num.toString
 }
 }
 
@@ -96,9 +99,11 @@ function generatePassword() {
   getCharTypes()
   loop()
   // charTypeCheck()
-  writePassword()
-  return password
+  // writePassword()
+  return "text"
   }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword)
+
+writePassword()
